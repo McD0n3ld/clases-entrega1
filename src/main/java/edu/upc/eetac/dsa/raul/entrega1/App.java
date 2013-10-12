@@ -1,6 +1,5 @@
 package edu.upc.eetac.dsa.raul.entrega1;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -27,13 +26,14 @@ public class App {
 				t = s.readLine();
 				ejercicio = Integer.parseInt(t);
 			} catch (Exception e) {
-				System.out.println("No has introducido un numero del 8 al 11");
+				System.out.println("No has introducido un numero del 1 al 7");
+				continue;
 			}
 
 			switch (ejercicio) {
 			case 1:
 				System.out.println("\n\n--------------------------------------------\nInicio ejercicio 1");
-				System.out.println("numeros.txt debe encontrarse en C:/");
+				System.out.println("Leyendo C:/numeros.txt");
 				BufferedReader br = FicherosLib.abrirFicheroLectura(direccion_1);
 				FicherosLib.leerNumerosEnteros(br);
 				System.out.println("Fin del ejercicio 1");
@@ -41,7 +41,7 @@ public class App {
 
 			case 2:
 				System.out.println("\n\n--------------------------------------------\nInicio ejercicio 2");
-				System.out.println("numeros.txt debe encontrarse en C:/");
+				System.out.println("Leyendo C:/numeros.txt");
 				br = FicherosLib.abrirFicheroLectura(direccion_1);
 				FicherosLib.leerNumerosEnterosBajos(br);
 				System.out.println("Fin del ejercicio 2");
@@ -49,7 +49,7 @@ public class App {
 
 			case 3:
 				System.out.println("\n\n--------------------------------------------\nInicio ejercicio 3");
-				System.out.println("numeros.txt debe encontrarse en C:/");
+				System.out.println("Leyendo C:/numeros.txt");
 				br = FicherosLib.abrirFicheroLectura(direccion_1);
 				FicherosLib.leerNumerosEnteros(br);
 				System.out.println("Fin del ejercicio 3");
@@ -57,34 +57,30 @@ public class App {
 
 			case 4:
 				System.out.println("\n\n--------------------------------------------\nInicio ejercicio 4");
-				System.out.println("-------> C:/");
-				br = FicherosLib.abrirFicheroLectura(direccion_2);
-				caracteres = FicherosLib.contarCaracteres(br);
+				System.out.println("Leyendo C:/texto.txt");
+				caracteres = FicherosLib.contarCaracteres(direccion_2);
 				FicherosLib.escribirCaracteres(direccion_3, caracteres, direccion_2);
 				System.out.println("Fin del ejercicio 4");
 				break;
 
 			case 5:
 				System.out.println("\n\n--------------------------------------------\nInicio ejercicio 5");
-				System.out.println("-------> C:/");
-				BufferedInputStream bis = FicherosLib.abrirImagen(direccion_4);
-				bytes = FicherosLib.contarBytes(bis);
+				System.out.println("Leyendo C:/imagen.jpg");
+				bytes = FicherosLib.contarBytes(direccion_4);
 				FicherosLib.escribirCaracteres(direccion_3, bytes, direccion_4);
 				System.out.println("Fin del ejercicio 5");
 				break;
 
 			case 6:
 				System.out.println("\n\n--------------------------------------------\nInicio ejercicio 6");
-				System.out.println("-------> C:/");
-				br = FicherosLib.abrirFicheroLectura(direccion_3);
-				ficheroMayor = FicherosLib.buscarArchivoMayor(br);
+				System.out.println("Leyendo C:/registro.txt");
+				ficheroMayor = FicherosLib.buscarArchivoMayor(direccion_3);
 				System.out.println(ficheroMayor);
 				System.out.println("Fin del ejercicio 6");
 				break;
 
 			case 7:
 				System.out.println("\n\n--------------------------------------------\nInicio ejercicio 7");
-				System.out.println("-------> C:/");
 				Dato dt1 = new Dato(2, "Prueba1", 'r');
 				Dato dt2 = new Dato(3, "Prueba2", 's');
 				Dato dt3 = new Dato(4, "Prueba3", 't');
@@ -93,8 +89,9 @@ public class App {
 				ArrayList<Dato> al = FicherosLib.recuperarObjetoFichero(direccion_5);
 				for (int i = 0; i < al.size(); i++) {
 					temp = al.get(i);
+					System.out.println("--");
 					System.out.println("String: " + temp.getTexto());
-					System.out.println("Numero" + temp.getNumero());
+					System.out.println("Numero: " + temp.getNumero());
 					System.out.println("Caracter: " + temp.getCaracter());
 				}
 
@@ -102,6 +99,7 @@ public class App {
 				break;
 
 			case 0:
+				System.out.println("Fin del test.");
 				return;
 				
 			default:

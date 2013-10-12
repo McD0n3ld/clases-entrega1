@@ -79,7 +79,8 @@ public class FicherosLib {
 	}
 
 	// Metodos EJERCICIO 4
-	public static int contarCaracteres(BufferedReader br) {
+	public static int contarCaracteres(String direccion) {
+		BufferedReader br = abrirFicheroLectura(direccion);
 		String line = null;
 		int cont = 0;
 		try {
@@ -88,6 +89,12 @@ public class FicherosLib {
 		} catch (IOException e) {
 			e.printStackTrace();
 			return -1;
+		} finally {
+			try {
+				br.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return cont;
 	}
@@ -127,7 +134,7 @@ public class FicherosLib {
 
 	// Metodos EJERCICIO 5
 
-	public static BufferedInputStream abrirImagen(String direccion_1) {
+	private static BufferedInputStream abrirImagen(String direccion_1) {
 		// variables
 		BufferedInputStream bis = null;
 		FileInputStream fis = null;
@@ -140,22 +147,31 @@ public class FicherosLib {
 		return bis;
 	}
 
-	public static int contarBytes(BufferedInputStream bis) {
+	public static int contarBytes(String dir) {
+		BufferedInputStream bis = FicherosLib.abrirImagen(dir);
 		try {
 			return bis.available();
 		} catch (IOException e) {
 			e.printStackTrace();
 			return -1;
+		} finally {
+			try {
+				bis.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
 	// Metodos EJERCICIO 6
 
-	public static String buscarArchivoMayor(BufferedReader br) {
+	public static String buscarArchivoMayor(String dir) {
 		int max = 0;
 		int bytes = 0;
 		String tempLine = "";
 		String line = "";
+		
+		BufferedReader br = FicherosLib.abrirFicheroLectura(dir);
 		try {
 			while ((tempLine = br.readLine()) != null) {
 				bytes = Integer.parseInt(tempLine.split("-")[1]);
@@ -202,16 +218,18 @@ public class FicherosLib {
 	}
 
 	public static ArrayList<Dato> recuperarObjetoFichero(String direccion) {
-		FileInputStream fos = null;
+		FileInputStream fis = null;
 		ObjectInputStream ois = null;
 		Object aux;
 		ArrayList<Dato> al = new ArrayList<Dato>();
 		try {
-			fos = new FileInputStream(direccion);
-			ois = new ObjectInputStream(fos);
-			while ((aux = ois.readObject()) != null)
+			fis = new FileInputStream(direccion);
+			ois = new ObjectInputStream(fis);
+			while (fis.available() > 0) {
+				aux = ois.readObject();
 				if (aux instanceof Dato)
 					al.add((Dato) aux);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
