@@ -5,11 +5,11 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class App {
-	static String direccion_1 = "C:/numeros.txt";
-	static String direccion_2 = "C:/texto.txt";
-	static String direccion_3 = "C:/registro.txt";
-	static String direccion_4 = "C:/imagen.jpg";
-	static String direccion_5 = "C:/objeto.bin";
+	static String direccion_1 = "numeros.txt";
+	static String direccion_2 = "texto.txt";
+	static String direccion_3 = "registro.txt";
+	static String direccion_4 = "imagen.jpg";
+	static String direccion_5 = "objeto.bin";
 
 	public static void main(String[] args) {
 		int caracteres = 0;
@@ -33,7 +33,7 @@ public class App {
 			switch (ejercicio) {
 			case 1:
 				System.out.println("\n\n--------------------------------------------\nInicio ejercicio 1");
-				System.out.println("Leyendo C:/numeros.txt");
+				System.out.println("Leyendo numeros.txt");
 				BufferedReader br = FicherosLib.abrirFicheroLectura(direccion_1);
 				FicherosLib.leerNumerosEnteros(br);
 				System.out.println("Fin del ejercicio 1");
@@ -41,7 +41,7 @@ public class App {
 
 			case 2:
 				System.out.println("\n\n--------------------------------------------\nInicio ejercicio 2");
-				System.out.println("Leyendo C:/numeros.txt");
+				System.out.println("Leyendo numeros.txt");
 				br = FicherosLib.abrirFicheroLectura(direccion_1);
 				FicherosLib.leerNumerosEnterosBajos(br);
 				System.out.println("Fin del ejercicio 2");
@@ -49,7 +49,7 @@ public class App {
 
 			case 3:
 				System.out.println("\n\n--------------------------------------------\nInicio ejercicio 3");
-				System.out.println("Leyendo C:/numeros.txt");
+				System.out.println("Leyendo numeros.txt");
 				br = FicherosLib.abrirFicheroLectura(direccion_1);
 				FicherosLib.leerNumerosEnteros(br);
 				System.out.println("Fin del ejercicio 3");
@@ -57,7 +57,7 @@ public class App {
 
 			case 4:
 				System.out.println("\n\n--------------------------------------------\nInicio ejercicio 4");
-				System.out.println("Leyendo C:/texto.txt");
+				System.out.println("Leyendo texto.txt");
 				caracteres = FicherosLib.contarCaracteres(direccion_2);
 				FicherosLib.escribirCaracteres(direccion_3, caracteres, direccion_2);
 				System.out.println("Fin del ejercicio 4");
@@ -65,7 +65,7 @@ public class App {
 
 			case 5:
 				System.out.println("\n\n--------------------------------------------\nInicio ejercicio 5");
-				System.out.println("Leyendo C:/imagen.jpg");
+				System.out.println("Leyendo imagen.jpg");
 				bytes = FicherosLib.contarBytes(direccion_4);
 				FicherosLib.escribirCaracteres(direccion_3, bytes, direccion_4);
 				System.out.println("Fin del ejercicio 5");
@@ -73,7 +73,7 @@ public class App {
 
 			case 6:
 				System.out.println("\n\n--------------------------------------------\nInicio ejercicio 6");
-				System.out.println("Leyendo C:/registro.txt");
+				System.out.println("Leyendo registro.txt");
 				ficheroMayor = FicherosLib.buscarArchivoMayor(direccion_3);
 				System.out.println(ficheroMayor);
 				System.out.println("Fin del ejercicio 6");
